@@ -8,11 +8,19 @@ class Calculadora(CTk):
         self.create_widgets()
     
     def create_widgets(self):
+        
+        def validar_entrada(novo_valor):
+             if novo_valor.isdigit() or novo_valor == "":
+                  return True
+             else:
+                  return False
+             
         #Campo de caracteres
         self.entry = CTkEntry(self, font=('Helvetica', 40), justify=RIGHT)
         self.entry.grid(row = 0, column = 0, columnspan = 4, padx=3, pady=3, sticky='nsew')
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
+        self.entry.configure(validate="key", validatecommand=(self.register(validar_entrada), '%P'))
 
         #Lista de botões
         botoes = [
