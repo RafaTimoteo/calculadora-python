@@ -1,17 +1,12 @@
 from customtkinter import *
 
+class Calculadora(CTk):
+    def __init__(self):
+        super().__init__()
+        self.title = ("Calculadora Python")
+        self.geometry = ("500x600")
 
-app = CTk()
-
-#Estrutura da Janela
-app.title('Calculadora Python')
-app.geometry('500x470+500+100')
-app.resizable(width=False, height=False)
-
-#Campo dos numeros
-camp_num = CTkEntry(app, width = 300)
-camp_num.place(x = 100, y = 25)
-
-
-
-app.mainloop()
+if __name__ == "__main__":
+    app = Calculadora()
+    app.mainloop()
+    
