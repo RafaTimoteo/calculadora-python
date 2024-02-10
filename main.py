@@ -24,13 +24,27 @@ class Calculadora(CTk):
 
         #Criação dos botões
         for (texto, linha, coluna) in botoes:
-            butao = CTkButton(self, font=('Helvitica', 30), text=texto)
+            butao = CTkButton(self, font=('Helvitica', 30), text=texto, command = lambda t=texto: self.click(t))
             butao.grid(row=linha, column=coluna, padx=2, pady=2, sticky='nsew')
             self.grid_rowconfigure(linha, weight=1)
             self.grid_columnconfigure(coluna, weight=1)
 
-            
+    def click(self, value):
+            valor_entry = self.entry.get()
 
+            if value == '=':
+                 try:
+                    resultado = eval(valor_entry)
+                    self.entry.delete(0, END)
+                    self.entry.insert(END, str(resultado))
+                 except:
+                      self.entry.delete(0, END)
+                      self.entry.insert(END, "Erro")
+            else:
+                 self.entry.insert(END, value)
+
+
+        
 if __name__ == "__main__":
     app = Calculadora()
     app.mainloop()
